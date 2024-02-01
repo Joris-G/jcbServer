@@ -2,9 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const router = require('./router');
+const cors = require('cors');
 
 const app = express();
-
+app.use(cors({ origin: '*', credentials: true }));
 app.use(bodyParser.json());
 app.use(cookieParser()); // Add cookieParser middleware
 app.use((req, res, next) => {

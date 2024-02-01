@@ -10,6 +10,9 @@ const userModel = {
     getUserByUsername(username) {
         return users.find(user => user.username === username);
     },
+    getAllUsers() {
+        return users.map((user => user.username));
+    }
 };
 
 module.exports = userModel;
