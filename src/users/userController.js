@@ -24,7 +24,7 @@ const userController = {
         //   return res.status(401).json({ message: "Il n'y a pas d'utilisateur à retourner" });
         //}
 
-        res.status(200).json({ user });
+        res.status(201).json({ user });
     },
 };
 
