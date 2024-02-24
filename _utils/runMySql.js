@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+const { exec, spawn } = require('child_process');
 const { getMySqlPath } = require('./installMySql');
 // Chemin vers l'exécutable de WampServer
 getMySqlPath()
@@ -6,58 +6,35 @@ getMySqlPath()
         console.log("Démarrage du server apache et mysql");
         // Commande pour démarrer WampServer
         const startApacheCommand = `"${path}/apache_start"`;
-        const startMysqlommand = `"${path}/mysql_start.bat"`;
+        const startMysqlCommand = `"${path}/mysql_start.bat"`;
         const nodemon = `nodemon index.js`;
-        console.log(startApacheCommand);
-        // Exécuter la commande pour démarrer WampServer
-        const apacheProcess = exec(startApacheCommand, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Erreur lors du démarrage de WampServer : ${error.message}`);
-                process.exit(1);
-            }
-            if (stderr) {
-                console.error(`Erreur lors du démarrage de WampServer : ${stderr}`);
-                process.exit(1);
-            }
-            console.log(`Xampp démarré avec succès : ${stdout}`);
-        });
-        console.log(startMysqlommand);
-        const mysqlProcess = exec(startMysqlommand, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Erreur lors du démarrage de mysql : ${error.message}`);
-                process.exit(1);
-            }
-            if (stderr) {
-                console.error(`Erreur lors du démarrage de mysql : ${stderr}`);
-                process.exit(1);
-            }
-            console.log(`mysql démarré avec succès : ${stdout}`);
-        });
-        console.log(nodemon);
-        const nodemonProcess = exec(nodemon, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Erreur lors du démarrage de nodemon : ${error.message}`);
-                process.exit(1);
-            }
-            if (stderr) {
-                console.error(`Erreur lors du démarrage de nodemon : ${stderr}`);
-                process.exit(1);
-            }
-            console.log(`nodemon démarré avec succès : ${stdout}`);
-        });
+        // Exécution des commandes en séquence
+        const apacheProcess = spawn(startApacheCommand, { shell: true });
+        const mysqlProcess = spawn(startMysqlCommand, [], { shell: true });
 
-
-
-
+        // Vérification si les commandes se sont terminées avec succès
         apacheProcess.on('exit', (code) => {
-            console.log(`Le processus WampServer s'est terminé avec le code ${code}`);
-            process.exit(code);
+            if (code === 0) {
+                console.log('Serveur Apache démarré avec succès.');
+                // Démarrage de MySQL après le démarrage réussi d'Apache
+                const nodemonProcess = spawn(nodemon, ['start'], { shell: true });
+                nodemonProcess.on('exit', (code) => {
+                    if (code === 0) {
+                        console.log('nodemon a été démarré avec succès.');
+                    } else {
+                        console.error(`Erreur lors du démarrage de nodemon: ${code}`);
+                    }
+                });
+            } else {
+                console.error(`Erreur lors du démarrage du serveur Apache: ${code}`);
+            }
         });
-    },
-        (err) => {
-            console.log("Impossible d'obtenir un server mysql. Erreur : " + err);
-        }); // Assurez-vous d'ajuster le chemin selon votre installation
 
-
-
-
+        mysqlProcess.on('exit', (code) => {
+            if (code === 0) {
+                console.log('Serveur MySQL démarré avec succès.');
+            } else {
+                console.error(`Erreur lors du démarrage du serveur MySQL: ${code}`);
+            }
+        });
+    });
