@@ -11,7 +11,7 @@ const userController = {
         res.status(200).json({ users });
     },
     async create(req, res) {
-        const { nom, prenom, email, role, service, projets, motDePasse } = req.body
+        const { lastname, firstname, email, roles, services, projects, password } = req.body
         //TODO à finir
         const user = userModel.getUserByUsername(email);
 
