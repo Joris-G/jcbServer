@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
     {
         timestamps: false,
     },
-    database: 'test1',
+    database: 'test',
     username: 'root', password: '',
     host: 'localhost',
     dialect: 'mysql'
@@ -14,9 +14,18 @@ const sequelize = new Sequelize({
 });
 
 // Test de la connexion à la base de données
+// Test de la connexion à la base de données
 sequelize.authenticate()
-    .then(() => {
+    .then(async () => {
         console.log('Connection to the database has been established successfully.');
+
+        // Créer la base de données si elle n'existe pas
+        try {
+            await sequelize.createSchema('test2');
+            console.log('Database created successfully (or already exists).');
+        } catch (error) {
+            console.error('Unable to create the database:', error);
+        }
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
