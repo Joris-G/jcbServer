@@ -1,5 +1,5 @@
 const express = require('express');
-const actionController = require('../src/action/actionController');
+const actionController = require('./actionController');
 
 const router = express.Router();
 router.get('/', actionController.getAll);

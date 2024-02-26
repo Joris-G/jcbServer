@@ -9,7 +9,8 @@ const sequelize = new Sequelize({
     database: 'test',
     username: 'root', password: '',
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    logging: (...msg) => console.log(msg),
 
 });
 
@@ -21,7 +22,7 @@ sequelize.authenticate()
 
         // Créer la base de données si elle n'existe pas
         try {
-            await sequelize.createSchema('test2');
+            await sequelize.define('test2');
             console.log('Database created successfully (or already exists).');
         } catch (error) {
             console.error('Unable to create the database:', error);
