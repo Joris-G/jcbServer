@@ -1,18 +1,52 @@
-const users = [
-    {
-        username: 'exampleUser',
-        password: '$2b$10$qe.VU/.NPMCA1fapMn.yL.JbNZLgzfu29r4x3lY9kFqDZ8g4y0PI2', // Hashed password
-    },
-    // Add more users as needed
-];
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../_server/server');
 
-const userModel = {
-    getUserByUsername(username) {
-        return users.find(user => user.username === username);
+const User = sequelize.define('User', {
+    lastname: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
-    getAllUsers() {
-        return users.map((user => user.username));
+    firstname: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isEmail: true
+        }
+    },
+    roles: {
+        type: DataTypes.STRING,
+        defaultValue: 'basic' // Valeur par défaut
+    },
+    services: {
+        type: DataTypes.STRING
+    },
+    projects: {
+        type: DataTypes.STRING
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
-};
+}, {
+    sequelize, // Utilisation de l'instance Sequelize
+    modelName: 'User', // Nom du modèle
+    tableName: 'users' // Nom de la table dans la base de données
+});
 
-module.exports = userModel;
+module.exports = User;
+
+// const userModel = {
+//     getUserByUsername(username) {
+//         return users.find(user => user.username === username);
+//     },
+//     getAllUsers() {
+//         return users.map((user => user.username));
+//     }
+// };
+
+// module.exports = userModel;
