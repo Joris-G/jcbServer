@@ -2,10 +2,10 @@ const projectModel = require('./project.models');
 
 const projectController = {
     async create(req, res) {
-        //     const { title, description, status, priority, assignedTo, followers, dueDate, createdBy, progressNotes } = req.body;
+        const { title, description, status, priority, assignedTo, followers, dueDate, createdBy, progressNotes } = req.body;
 
-        //     const action = projectModel.create(title, description, status, priority, assignedTo, followers, dueDate, createdBy, progressNotes)
-        //     res.status(201).json(action);
+        const action = projectModel.create(title, description, status, priority, assignedTo, followers, dueDate, createdBy, progressNotes)
+        res.status(201).json(action);
     },
 
     async getById(req, res) {
