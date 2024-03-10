@@ -10,7 +10,8 @@ const sequelize = new Sequelize({
     username: 'root', password: '',
     host: 'localhost',
     dialect: 'mysql',
-    logging: (...msg) => console.log(msg),
+    // logging: (...msg) => console.log(msg),
+    logging: console.log,
 
 });
 

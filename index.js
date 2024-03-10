@@ -10,8 +10,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser()); // Add cookieParser middleware
 app.use((req, res, next) => {
     // Allow requests from localhost (adjust as needed)
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8100');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:8100');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Access-Control-Allow-Credentials', 'true');
     next();
@@ -37,8 +38,3 @@ app.listen(PORT, async () => {
     }
 
 });
-// const PORT = process.env.PORT || 3000;
-
-// server.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
