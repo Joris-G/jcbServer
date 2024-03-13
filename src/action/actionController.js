@@ -1,4 +1,4 @@
-const actionModel = require('./action.models');
+const actionModel = require('./action.model');
 
 const actionController = {
     async create(req, res) {

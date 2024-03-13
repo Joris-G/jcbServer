@@ -3,7 +3,7 @@ const authRouter = require('./src/auth/authRouter');
 const userRouter = require('./src/users/userRouter');
 const processRouter = require('./src/process/processRouter');
 const actionRouter = require('./src/action/actionRouter');
-const projectRouter = require('./src/project/projectRouter');
+const projectRouter = require('./src/projects/projectRouter');
 const authMiddleware = require('./src/_middlewares/authMiddleware');
 
 const router = express.Router();
