@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../_server/server');
+const sequelize = require('../../server');
 
 const Document = sequelize.define('Document', {
     id: {

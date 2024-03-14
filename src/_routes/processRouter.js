@@ -1,5 +1,5 @@
 const express = require('express');
-const processController = require('./processController');
+const processController = require('../_controllers/processController');
 
 const router = express.Router();
 router.get('/', processController.getAll);

@@ -1,5 +1,4 @@
-
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
     define:
@@ -15,4 +14,5 @@ const sequelize = new Sequelize({
 
 });
 
+console.log("All models were synchronized successfully.");
 module.exports = sequelize;

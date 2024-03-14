@@ -1,9 +1,9 @@
 const express = require('express');
-const authRouter = require('./src/auth/authRouter');
-const userRouter = require('./src/users/userRouter');
-const processRouter = require('./src/process/processRouter');
-const actionRouter = require('./src/action/actionRouter');
-const projectRouter = require('./src/projects/projectRouter');
+const authRouter = require('./src/_routes/authRouter');
+const userRouter = require('./src/_routes/userRouter');
+const processRouter = require('./src/_routes/processRouter');
+const actionRouter = require('./src/_routes/actionRouter');
+const projectRouter = require('./src/_routes/projectRouter');
 const authMiddleware = require('./src/_middlewares/authMiddleware');
 
 const router = express.Router();

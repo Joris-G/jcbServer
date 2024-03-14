@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../_server/server');
-const Project = require('../projects/projects.model');
+const sequelize = require('../../server');
+const Project = require('./projects.model');
 
 const Client = sequelize.define('Client', {
     id: {

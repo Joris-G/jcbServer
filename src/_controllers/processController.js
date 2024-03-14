@@ -1,4 +1,4 @@
-const processModel = require('./process.models');
+const processModel = require('../_models/process.models');
 
 const processController = {
     async create(req, res) {

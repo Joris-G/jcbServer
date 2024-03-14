@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../_server/server');
-const User = require('../users/user.model'); // Importer le modèle d'utilisateur
+const sequelize = require('../../server');
+const User = require('./user.model'); // Importer le modèle d'utilisateur
 
 const Task = sequelize.define('Task', {
     id: {
