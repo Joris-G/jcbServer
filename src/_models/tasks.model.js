@@ -1,31 +1,24 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../server');
-const User = require('./user.model'); // Importer le modèle d'utilisateur
+const { DataTypes } = require("sequelize");
 
-const Task = sequelize.define('Task', {
+module.exports = (sequelize) => {
+  return sequelize.define("Task", {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     description: {
-        type: DataTypes.TEXT,
-        allowNull: false
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     priority: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     status: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-
-});
-
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
+};
 // Définir les relations
-Task.belongsTo(User, { as: 'assignee' });
-Task.belongsToMany(User, { through: 'TaskFollowers', as: 'followers' });
-
-
-module.exports = Task;
