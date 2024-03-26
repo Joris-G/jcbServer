@@ -1,5 +1,5 @@
 class MainError extends Error {
-  constructor(errorMessage, errorType = "") {
+  constructor(errorMessage = "", errorType = "") {
     super();
 
     this.name = this.constructor.name;
@@ -40,13 +40,15 @@ class MainError extends Error {
 
 class AuthenticationError extends MainError {}
 class UserError extends MainError {}
-class CocktailError extends MainError {}
+class AuthError extends MainError {}
 class RequestError extends MainError {}
+class ProjectError extends MainError {}
 
 module.exports = {
   MainError,
   AuthenticationError,
   UserError,
-  CocktailError,
+  AuthError,
   RequestError,
+  ProjectError,
 };
