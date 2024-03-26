@@ -1,4 +1,5 @@
-const userModel = require("../_models/user.model");
+const { UserError, RequestError } = require("../_errors/customError");
+const DB = require("../../database");
 const bcrypt = require("bcrypt");
 
 const userController = {
@@ -13,21 +14,27 @@ const userController = {
 
     res.status(200).json({ users });
   },
-  async create(req, res) {
-    const { lastname, firstname, email, roles, services, projects, password } =
-      req.body;
-    if (!lastname || !firstname || !email || !password) {
-      throw new Error("test");
-    }
-    //TODO à finir
+  async create(req, res, next) {
     try {
-      const findUser = await userModel.findOne({ where: { email } });
+      const {
+        lastname,
+        firstname,
+        email,
+        roles,
+        services,
+        projects,
+        password,
+      } = req.body;
+      if (!lastname || !firstname || !email || !password) {
+        throw new RequestError("Missing parameter", "401");
+      }
+      const findUser = await DB.User.findOne({ where: { email } });
 
       if (findUser) {
-        return res.status(401).json({ message: "e-mail déjà utilisé" });
+        throw new UserError({ message: "e-mail déjà utilisé" }, "401");
       }
       const hashedPassword = bcrypt.hashSync(password, 10);
-      const user = await userModel.create({
+      const user = await DB.User.create({
         lastname,
         firstname,
         email,
@@ -37,14 +44,14 @@ const userController = {
         password: hashedPassword,
       });
       if (!user) {
-        return res
-          .status(401)
-          .json({ message: "Echec lors de la création de l'utilisateur" });
+        throw new UserError(
+          "Echec lors de la création de l'utilisateur",
+          "401"
+        );
       }
-      res.status(201).json({ message: "Utilisateur créé avec succès" });
+      return res.status(201).json({ message: "Utilisateur créé avec succès" });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      next(error);
     }
   },
 };
