@@ -1,0 +1,229 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "JCBServer",
+    "dateExported": "2024-03-26T06:44:15.921Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b7b285af-b258-4213-b3b8-f104df072411",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-03-19T18:41:02.668Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "b2f7d7a8-ad39-4cf8-a96e-10a67079feff",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-03-24T14:47:59.251Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "826a3273-8e0c-42af-9399-f878bc279440",
+            "name": "Project",
+            "containerId": "",
+            "created": "2024-03-24T18:32:51.066Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "5b91a223-a9d2-4e14-bcbb-0d19555d89d9",
+            "name": "Task",
+            "containerId": "",
+            "created": "2024-03-24T18:32:59.618Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "d657ea10-319d-4ef9-a189-e0af23b097ba",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b2f7d7a8-ad39-4cf8-a96e-10a67079feff",
+            "name": "createMissingInfoUser",
+            "url": "http://localhost:3000/api/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-24T14:45:21.224Z",
+            "modified": "2024-03-24T14:47:43.371Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"lastname\":\"joris\",\n        \"firstname\":\"\",\n        \"email\":\"joris.grangier@test.com\",\n        \"roles\":\"\",\n        \"services\":\"\",\n        \"projects\":\"\",\n        \"password\":\"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "135f5eaa-641f-4a0c-9b2e-7c5d1f8e9356",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b2f7d7a8-ad39-4cf8-a96e-10a67079feff",
+            "name": "createWrongEmailUser",
+            "url": "http://localhost:3000/api/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-24T14:47:12.072Z",
+            "modified": "2024-03-24T14:47:12.072Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"lastname\":\"joris\",\n        \"firstname\":\"joris\",\n        \"email\":\"joris.grangier@test.com\",\n        \"roles\":\"\",\n        \"services\":\"\",\n        \"projects\":\"\",\n        \"password\":\"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b385271f-31a6-4136-a3c1-c97c169cd606",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b7b285af-b258-4213-b3b8-f104df072411",
+            "name": "login",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-24T14:58:42.674Z",
+            "modified": "2024-03-24T18:03:23.601Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"joris.grangier@test.com\",\n  \"password\":\"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "58ebd518-625e-4c1a-b999-22ae25b9f1af",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b2f7d7a8-ad39-4cf8-a96e-10a67079feff",
+            "name": "createUser",
+            "url": "http://localhost:3000/api/users",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-19T18:41:12.094Z",
+            "modified": "2024-03-24T14:03:13.967Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"lastname\":\"joris\",\n        \"firstname\":\"joris\",\n        \"email\":\"joris.grangier@test.com\",\n        \"roles\":\"\",\n        \"services\":\"\",\n        \"projects\":\"\",\n        \"password\":\"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "311607e8-01e2-445d-b0fc-11ca19e6917e",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b7b285af-b258-4213-b3b8-f104df072411",
+            "name": "logout",
+            "url": "http://localhost:3000/api/auth/logout",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-24T14:58:48.533Z",
+            "modified": "2024-03-24T18:13:31.591Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "404a2669-48e8-469f-9d5e-2302e40d25af",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b7b285af-b258-4213-b3b8-f104df072411",
+            "name": "loginBadUser",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-03-24T14:59:00.684Z",
+            "modified": "2024-03-24T16:29:57.031Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"joris.grangier1@test.com\",\n  \"password\":\"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0f8a76a7-6bbc-4144-b580-037b20231fbb",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "b7b285af-b258-4213-b3b8-f104df072411",
+            "name": "loginBadPassword",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-03-24T14:59:11.106Z",
+            "modified": "2024-03-24T16:33:10.697Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"joris.grangier@test.com\",\n  \"password\":\"test1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "76736897-9a8f-4c7b-9d97-fecad0c0ceb6",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "826a3273-8e0c-42af-9399-f878bc279440",
+            "name": "createProject",
+            "url": "http://localhost:3000/api/project",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-03-24T18:54:44.706Z",
+            "modified": "2024-03-25T20:06:55.246Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"title\":\"Nom du projet\",\n   \"description\":\"wp de 12 meubles\",\n   \"projectType\":\"sur plan\",\n   \"startDate\":\"12/01/2023\",\n   \"estimatedEndDate\":\"12/12/2024\",\n   \"managerId\":1, \n   \"status\":\"inProduction\",\n   \"priority\":\"normal\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvcmlzLmdyYW5naWVyQHRlc3QuY29tIiwiaWF0IjoxNzExMzk3MjAxLCJleHAiOjE3MTE0MzMyMDF9.DZZXHDcrrk3UShTbGTdQICSsDlcQuU-QWE0FWq_T7ZQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9e888baa-3e0c-4b7f-84c1-9ddc27453aff",
+            "colId": "ee025b71-3cb8-4f13-b917-852adc329fdf",
+            "containerId": "826a3273-8e0c-42af-9399-f878bc279440",
+            "name": "getProjects",
+            "url": "http://localhost:3000/api/project",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-03-25T18:25:16.167Z",
+            "modified": "2024-03-25T20:07:08.454Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvcmlzLmdyYW5naWVyQHRlc3QuY29tIiwiaWF0IjoxNzExMzk3MjAxLCJleHAiOjE3MTE0MzMyMDF9.DZZXHDcrrk3UShTbGTdQICSsDlcQuU-QWE0FWq_T7ZQ"
+            },
+            "tests": []
+        }
+    ]
+}
